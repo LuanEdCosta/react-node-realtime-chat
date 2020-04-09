@@ -17,12 +17,20 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    height: 100%;
   }
 
   body {
+    background: ${({ theme }) => theme.baseBackground};
+    color: ${({ theme }) => theme.primaryText};
     font-family: 'Monda', monospace;
     height: 100%;
+    overflow-x: hidden;
     ${fontStyle}
+  }
+
+  #root {
+    height: 100%;
   }
 
   textarea, input, button, code {

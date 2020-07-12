@@ -1,5 +1,5 @@
 {
-  "name": "smart-bot",
+  "name": "react-node-realtime-chat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

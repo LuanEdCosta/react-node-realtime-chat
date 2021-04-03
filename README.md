@@ -1,6 +1,6 @@
 # :envelope: React and Node Realtime Chat
 
-This project was created to learn more about websockets and realtime applications using **NodeJs** and **ReactJs**.
+This project was created to learn more about Web Sockets and realtime applications using **NodeJs** and **ReactJs**.
 
 ## :zap: Technologies
 
@@ -11,4 +11,3 @@ This project was created to learn more about websockets and realtime application
 - Eslint
 - Prettier
 - Styled Components
-- FontAwesome Icons

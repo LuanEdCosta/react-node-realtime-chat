@@ -9,6 +9,11 @@ export const Container = styled.div`
 
   overflow-y: auto;
   ${DefaultScrollBar};
+
+  @media only screen and (max-width: 968px) {
+    border-bottom: 1px solid ${(props) => props.theme.snow};
+    border-right: none;
+  }
 `
 
 export const User = styled(UserItem)``

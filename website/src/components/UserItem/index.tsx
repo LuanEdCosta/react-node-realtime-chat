@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Container, NameInitials, Content, Name, Status } from './styles'
 
@@ -12,28 +12,32 @@ export interface UserItemProps {
   onClick?: (e: React.MouseEvent) => void
 }
 
-export const UserItem: React.FC<UserItemProps> = ({
-  className,
-  style,
-  name,
-  status,
-  isSelected = false,
-  isDisabled = false,
-  onClick,
-}) => {
-  return (
-    <Container
-      className={className}
-      style={style}
-      isSelected={isSelected}
-      onClick={isDisabled ? undefined : onClick}
-    >
-      <NameInitials text={name} />
+export const UserItem: React.FC<UserItemProps> = memo(
+  ({
+    className,
+    style,
+    name,
+    status,
+    isSelected = false,
+    isDisabled = false,
+    onClick,
+  }) => {
+    return (
+      <Container
+        className={className}
+        style={style}
+        isSelected={isSelected}
+        onClick={isDisabled ? undefined : onClick}
+      >
+        <NameInitials text={name} />
 
-      <Content>
-        <Name>{name}</Name>
-        <Status>{status}</Status>
-      </Content>
-    </Container>
-  )
-}
+        <Content>
+          <Name>{name}</Name>
+          <Status>{status}</Status>
+        </Content>
+      </Container>
+    )
+  },
+)
+
+UserItem.displayName = 'UserItem'

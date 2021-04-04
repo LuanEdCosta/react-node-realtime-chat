@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import {
   Container,
   MessageContainer,
@@ -17,29 +19,33 @@ export interface MessageItemProps {
   isFromCurrentUser?: boolean
 }
 
-export const MessageItem: React.FC<MessageItemProps> = ({
-  className,
-  style,
-  message,
-  senderName,
-  datetime,
-  isFromCurrentUser = false,
-}) => {
-  return (
-    <Container
-      className={className}
-      style={style}
-      isFromCurrentUser={isFromCurrentUser}
-    >
-      <MessageContainer>
-        <InfoContainer>
-          <SenderInitials text={senderName} />
-          <SenderName>{senderName}</SenderName>
-          <DateTime>{datetime}</DateTime>
-        </InfoContainer>
+export const MessageItem: React.FC<MessageItemProps> = memo(
+  ({
+    className,
+    style,
+    message,
+    senderName,
+    datetime,
+    isFromCurrentUser = false,
+  }) => {
+    return (
+      <Container
+        className={className}
+        style={style}
+        isFromCurrentUser={isFromCurrentUser}
+      >
+        <MessageContainer>
+          <InfoContainer>
+            <SenderInitials text={senderName} />
+            <SenderName>{senderName}</SenderName>
+            <DateTime>{datetime}</DateTime>
+          </InfoContainer>
 
-        <Message>{message}</Message>
-      </MessageContainer>
-    </Container>
-  )
-}
+          <Message>{message}</Message>
+        </MessageContainer>
+      </Container>
+    )
+  },
+)
+
+MessageItem.displayName = 'MessageItem'

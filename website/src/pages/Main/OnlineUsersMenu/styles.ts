@@ -12,3 +12,11 @@ export const Container = styled.div`
 `
 
 export const User = styled(UserItem)``
+
+export const PlaceholderContainer = styled.div`
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

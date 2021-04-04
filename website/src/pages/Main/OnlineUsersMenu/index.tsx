@@ -1,88 +1,50 @@
-import { Container, User } from './styles'
+import { FiUser } from 'react-icons/fi'
 
-export const OnlineUsersMenu: React.FC = () => {
+import { Placeholder } from 'src/components'
+
+import { Container, User, PlaceholderContainer } from './styles'
+
+export interface OnlineUsersMenuProps {
+  selectedUserId: string | null
+  setSelectedUserId: Helpers.ReactState<string | null>
+}
+
+export const OnlineUsersMenu: React.FC<OnlineUsersMenuProps> = ({
+  selectedUserId,
+  setSelectedUserId,
+}) => {
+  const onlineUsers: GlobalTypes.User[] = []
+
   return (
     <Container>
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
+      {onlineUsers.map((user) => {
+        const isSelected = selectedUserId === user.id
 
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-        isSelected
-      />
+        const handleSelectThisUser = () => {
+          if (isSelected) return
+          setSelectedUserId(user.id)
+        }
 
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
+        return (
+          <User
+            key={user.id}
+            name={user.name}
+            status={user.status}
+            isSelected={isSelected}
+            isDisabled={isSelected}
+            onClick={handleSelectThisUser}
+          />
+        )
+      })}
 
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
-
-      <User
-        name="Luan Eduardo da Costa"
-        status="I just wanna talk about programming"
-      />
+      {onlineUsers.length === 0 && (
+        <PlaceholderContainer>
+          <Placeholder
+            iconComponent={<FiUser />}
+            message="You Are Alone Here"
+          />
+        </PlaceholderContainer>
+      )}
     </Container>
   )
 }

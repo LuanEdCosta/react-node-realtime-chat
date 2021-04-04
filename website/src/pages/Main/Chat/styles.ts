@@ -21,7 +21,17 @@ export const MessagesContainer = styled.div`
 `
 
 export const Message = styled(MessageItem)`
-  margin-bottom: 1.6rem;
+  &:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+`
+
+export const PlaceholderContainer = styled.div`
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const MessageForm = styled.form`

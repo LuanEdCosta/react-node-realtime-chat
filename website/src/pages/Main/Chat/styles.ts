@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { DefaultScrollBar } from 'src/styles'
+import { MessageItem } from 'src/components'
 
 export const Container = styled.div`
   height: 100%;
@@ -15,6 +16,12 @@ export const MessagesContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   ${DefaultScrollBar};
+
+  padding: 1.6rem;
+`
+
+export const Message = styled(MessageItem)`
+  margin-bottom: 1.6rem;
 `
 
 export const MessageForm = styled.form`
@@ -24,6 +31,8 @@ export const MessageForm = styled.form`
   align-items: center;
 
   padding: 1.6rem;
+
+  border-top: 1px solid ${(props) => props.theme.snow};
 `
 
 export const MessageInput = styled.input`

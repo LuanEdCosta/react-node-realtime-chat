@@ -1,5 +1,6 @@
 import {
   Container,
+  MessageContainer,
   InfoContainer,
   SenderInitials,
   SenderName,
@@ -13,6 +14,7 @@ export interface MessageItemProps {
   message: string
   senderName: string
   datetime: string
+  isFromCurrentUser?: boolean
 }
 
 export const MessageItem: React.FC<MessageItemProps> = ({
@@ -21,16 +23,23 @@ export const MessageItem: React.FC<MessageItemProps> = ({
   message,
   senderName,
   datetime,
+  isFromCurrentUser = false,
 }) => {
   return (
-    <Container className={className} style={style}>
-      <InfoContainer>
-        <SenderInitials text={senderName} />
-        <SenderName>{senderName}</SenderName>
-        <DateTime>{datetime}</DateTime>
-      </InfoContainer>
+    <Container
+      className={className}
+      style={style}
+      isFromCurrentUser={isFromCurrentUser}
+    >
+      <MessageContainer>
+        <InfoContainer>
+          <SenderInitials text={senderName} />
+          <SenderName>{senderName}</SenderName>
+          <DateTime>{datetime}</DateTime>
+        </InfoContainer>
 
-      <Message>{message}</Message>
+        <Message>{message}</Message>
+      </MessageContainer>
     </Container>
   )
 }

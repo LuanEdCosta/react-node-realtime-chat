@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import { DefaultScrollBar } from 'src/styles'
-
 export const Container = styled.div`
   background: ${(props) => props.theme.background};
 
@@ -20,14 +18,11 @@ export const Container = styled.div`
 `
 
 export const UsersContainer = styled.div`
-  grid-area: 'users';
-
-  border-right: 1px solid ${(props) => props.theme.snow};
-
-  overflow-y: auto;
-  ${DefaultScrollBar};
+  grid-area: users;
+  overflow: hidden;
 `
 
 export const ChatContainer = styled.div`
-  grid-area: 'chat';
+  grid-area: chat;
+  overflow: hidden;
 `

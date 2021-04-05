@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
+import { AccentButton, SnowInput } from 'src/components'
+
 export const Container = styled.div`
-  background: ${(props) => props.theme.snowDark};
+  background: ${(props) => props.theme.snow};
 
   display: grid;
   place-items: center;
@@ -23,8 +25,23 @@ export const SignInForm = styled.form`
   padding: 2.4rem;
 `
 
-export const Label = styled.label``
+export const Label = styled.label`
+  display: flex;
+  align-items: center;
 
-export const TextInput = styled.input``
+  margin-bottom: 0.8rem;
 
-export const SignInButton = styled.button``
+  > *:not(:last-child) {
+    margin-right: 0.8rem;
+  }
+`
+
+export const TextInput = styled(SnowInput)`
+  margin-bottom: 2.4rem;
+
+  width: 100%;
+`
+
+export const SignInButton = styled(AccentButton)`
+  width: 100%;
+`

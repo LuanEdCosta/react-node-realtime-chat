@@ -4,6 +4,7 @@
         "camelcase",
         "get",
         "resizer",
+        "respawn",
         "ttfb"
     ]
 }

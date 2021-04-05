@@ -2,3 +2,7 @@
 website/public
 website/build
 website/node_modules
+
+# Backend Folders
+backend/node_modules
+backend/dist

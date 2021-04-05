@@ -1,20 +1,15 @@
-const express = require('express')
-const cors = require('cors')
-const http = require('http')
-const socketIo = require('socket.io')
-
-const app = express()
-const server = http.createServer(app)
-const io = socketIo(server)
-
-app.use(express.json())
-app.use(cors())
-
-io.on('connection', (socket) => {
-  socket.on('sendMessage', (data) => {
-    console.log(JSON.stringify(data))
-    socket.emit('receiveMessage', data)
-  })
-})
-
-server.listen(3333)
+"use strict";
+exports.__esModule = true;
+var socket_io_1 = require("socket.io");
+var http_1 = require("http");
+var express_1 = require("express");
+var cors_1 = require("cors");
+var app = express_1["default"]();
+var server = http_1.createServer(app);
+var io = new socket_io_1.Server(server);
+app.use(express_1["default"].json());
+app.use(cors_1["default"]());
+io.on('connection', function (socket) {
+    console.log('Connected');
+});
+server.listen(3333);

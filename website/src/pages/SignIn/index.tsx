@@ -69,7 +69,7 @@ const SignIn: React.FC = () => {
           ref={statusRef}
           id="status"
           name="status"
-          placeholder="Ex: Luan Eduardo"
+          placeholder="Ex: I like music and programming"
         />
 
         <SignInButton type="submit">

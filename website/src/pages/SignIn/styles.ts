@@ -9,6 +9,8 @@ export const Container = styled.div`
   place-items: center;
 
   height: 100%;
+
+  padding: 1.6rem;
 `
 
 export const SignInForm = styled.form`
@@ -19,8 +21,7 @@ export const SignInForm = styled.form`
   box-shadow: 0.3rem 0.3rem 1.6rem 0.1rem rgba(0, 0, 0, 0.1);
 
   width: 100%;
-  max-width: 30%;
-  min-width: 30rem;
+  max-width: 60rem;
 
   padding: 2.4rem;
 `

@@ -1,7 +1,9 @@
 import { createContext, useMemo, useState } from 'react'
 
+type CurrentUser = GlobalTypes.Common.UserWithoutId | null
+
 const useContextState = () => {
-  const [user, setUser] = useState<GlobalTypes.User | null>(null)
+  const [user, setUser] = useState<CurrentUser>(null)
   const isCurrentUserOnline = useMemo(() => !!user, [user])
   return { user, setUser, isCurrentUserOnline }
 }

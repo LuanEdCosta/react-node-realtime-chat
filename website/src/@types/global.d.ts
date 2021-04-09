@@ -16,4 +16,8 @@ namespace GlobalTypes {
       name: string
     }
   }
+
+  namespace Common {
+    type UserWithoutId = Omit<User, 'id'>
+  }
 }

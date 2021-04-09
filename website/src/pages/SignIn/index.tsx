@@ -36,12 +36,7 @@ const SignIn: React.FC = () => {
     e.preventDefault()
     if (handleValidation()) {
       const { name, status } = getValues()
-
-      setUser({
-        id: new Date().getTime().toString(),
-        name,
-        status,
-      })
+      setUser({ name, status })
     }
   }
 

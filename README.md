@@ -24,8 +24,38 @@ The main idea of the project is very simple: the user sign in with a name and a 
 - Prettier
 - Socket IO Client
 
+## :information_source: How To Use
+
+To clone and run this application, you'll need [Git][git], [Node.js][nodejs] + [Yarn][yarn] installed on your computer.
+
+From your command line:
+
+```bash
+# Clone the project from GitHub
+$ git clone https://github.com/LuanEdCosta/react-node-realtime-chat.git
+
+# Go into the project folder
+$ cd react-node-realtime-chat
+
+# -- Now open two terminal tabs or windows --
+
+# In the first terminal run
+$ cd website
+$ yarn install
+$ yarn start
+
+# In the second terminal run
+$ cd backend
+$ yarn install
+$ yarn dev
+```
+
 ---
 
 ## :man: Author
 
 Luan Eduardo da Costa | [Follow me on Linkedin](https://www.linkedin.com/in/luaneducosta/)
+
+[git]: https://git-scm.com
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/

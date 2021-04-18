@@ -4,6 +4,8 @@ This project was created to learn more about Web Sockets and realtime applicatio
 
 The main idea of the project is very simple: the user sign in with a name and a status, choose another user and start a conversation with him. Programming something like this is not as easy as may seem, but there are many tutorials out there to learn everything that is needed for this project.
 
+<img src="preview.gif" alt="App Preview" />
+
 ## :zap: Technologies
 
 **Back-end**
@@ -23,6 +25,12 @@ The main idea of the project is very simple: the user sign in with a name and a 
 - Eslint
 - Prettier
 - Socket IO Client
+- date-fns
+
+## :rocket: What I Learned With This Project
+
+1. Socket.io is a very easy and powerful library. When you understand how it works everything become easy.
+2. React + Node + TypeScript is a powerful stack
 
 ## :information_source: How To Use
 

@@ -18,7 +18,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 968px) {
     grid-template-areas: 'users' 'chat';
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.4fr 1fr;
     grid-template-columns: 1fr;
   }
 `

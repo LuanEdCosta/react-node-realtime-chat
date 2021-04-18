@@ -1,10 +1,10 @@
-import { useMemo, useRef } from 'react'
-import { FiMessageSquare, FiSend } from 'react-icons/fi'
-import { formatDistance, subDays } from 'date-fns'
+import { useEffect, useMemo, useRef } from 'react'
+import { formatDistance } from 'date-fns'
+import { FiMessageSquare, FiSend, FiUser } from 'react-icons/fi'
 
+import { useChat, useUser } from 'src/hooks'
+import { SERVER_EVENTS } from 'src/configs'
 import { Placeholder } from 'src/components'
-
-import { Conversation } from '../types'
 
 import {
   Container,
@@ -16,47 +16,71 @@ import {
   SendMessageButton,
 } from './styles'
 
-export interface ChatProps {
-  selectedUserId: string | null
-  currentConversation?: Conversation
-}
+export const Chat: React.FC = () => {
+  const { selectedUserId, currentConversation, socket } = useChat()
+  const { user } = useUser()
 
-export const Chat: React.FC<ChatProps> = ({
-  currentConversation,
-  selectedUserId,
-}) => {
   const messageRef = useRef<HTMLInputElement | null>(null)
 
   const hasNoMessageToShow = useMemo(() => {
-    return !currentConversation?.messages.length
-  }, [currentConversation])
+    return !selectedUserId || !currentConversation?.messages.length
+  }, [currentConversation?.messages.length, selectedUserId])
 
   const emptyMessage = useMemo(() => {
-    if (!currentConversation) return 'Select an User to Start a Conversation'
+    if (!selectedUserId) return 'Select an User to Start a Conversation'
     return 'No Messages to Show'
-  }, [currentConversation])
+  }, [selectedUserId])
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(selectedUserId)
+    const messageText = messageRef.current?.value
+
+    if (!socket || !messageText || !selectedUserId || !user) return
+
+    const newMessage: GlobalTypes.Message = {
+      id: new Date().getTime().toString(),
+      timestamp: new Date().getTime(),
+      text: messageText,
+      from: {
+        id: socket.id,
+        name: user.name,
+      },
+      to: {
+        id: selectedUserId,
+      },
+    }
+
+    if (messageRef.current) {
+      messageRef.current.value = ''
+      messageRef.current.focus()
+    }
+
+    socket.emit(SERVER_EVENTS.SEND_MESSAGE, newMessage)
   }
+
+  useEffect(() => {
+    if (!selectedUserId && messageRef.current) {
+      messageRef.current.value = ''
+    }
+  }, [selectedUserId])
 
   return (
     <Container>
       <MessagesContainer>
         {currentConversation?.messages.map((message) => {
-          const datetime = formatDistance(
-            subDays(message.timestamp, 3),
-            new Date(),
-            { addSuffix: true },
-          )
+          const isFromCurrentUser = message.from.id === socket?.id
+
+          const datetime = formatDistance(message.timestamp, new Date(), {
+            addSuffix: true,
+          })
 
           return (
             <Message
               key={message.id}
-              message={message.message}
-              senderName={message.sender.name}
+              message={message.text}
+              senderName={message.from.name}
               datetime={datetime}
+              isFromCurrentUser={isFromCurrentUser}
             />
           )
         })}
@@ -64,7 +88,7 @@ export const Chat: React.FC<ChatProps> = ({
         {hasNoMessageToShow && (
           <PlaceholderContainer>
             <Placeholder
-              iconComponent={<FiMessageSquare />}
+              iconComponent={selectedUserId ? <FiMessageSquare /> : <FiUser />}
               message={emptyMessage}
             />
           </PlaceholderContainer>

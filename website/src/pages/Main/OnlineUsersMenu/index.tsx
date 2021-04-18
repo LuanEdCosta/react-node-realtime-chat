@@ -1,19 +1,12 @@
 import { FiUser } from 'react-icons/fi'
 
 import { Placeholder } from 'src/components'
+import { useChat } from 'src/hooks'
 
 import { Container, User, PlaceholderContainer } from './styles'
 
-export interface OnlineUsersMenuProps {
-  selectedUserId: string | null
-  setSelectedUserId: Helpers.ReactState<string | null>
-}
-
-export const OnlineUsersMenu: React.FC<OnlineUsersMenuProps> = ({
-  selectedUserId,
-  setSelectedUserId,
-}) => {
-  const onlineUsers: GlobalTypes.User[] = []
+export const OnlineUsersMenu: React.FC = () => {
+  const { onlineUsers, selectedUserId, setSelectedUserId } = useChat()
 
   return (
     <Container>
@@ -21,8 +14,7 @@ export const OnlineUsersMenu: React.FC<OnlineUsersMenuProps> = ({
         const isSelected = selectedUserId === user.id
 
         const handleSelectThisUser = () => {
-          if (isSelected) return
-          setSelectedUserId(user.id)
+          setSelectedUserId(isSelected ? null : user.id)
         }
 
         return (
@@ -31,7 +23,6 @@ export const OnlineUsersMenu: React.FC<OnlineUsersMenuProps> = ({
             name={user.name}
             status={user.status}
             isSelected={isSelected}
-            isDisabled={isSelected}
             onClick={handleSelectThisUser}
           />
         )

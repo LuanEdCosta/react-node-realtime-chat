@@ -9,12 +9,23 @@ namespace GlobalTypes {
 
   interface Message {
     id: string
-    message: string
+    text: string
     timestamp: number
-    sender: {
+    to: {
+      id: string
+    }
+    from: {
       id: string
       name: string
     }
+  }
+
+  interface Conversation {
+    messages: GlobalTypes.Message[]
+  }
+
+  interface Conversations {
+    [socketId: string]: Conversation
   }
 
   namespace Common {

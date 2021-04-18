@@ -8,9 +8,8 @@ namespace GlobalTypes {
   }
 
   interface Message {
-    id: string
-    text: string
     timestamp: number
+    text: string
     to: {
       id: string
     }

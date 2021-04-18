@@ -38,7 +38,6 @@ export const Chat: React.FC = () => {
     if (!socket || !messageText || !selectedUserId || !user) return
 
     const newMessage: GlobalTypes.Message = {
-      id: new Date().getTime().toString(),
       timestamp: new Date().getTime(),
       text: messageText,
       from: {
@@ -76,7 +75,7 @@ export const Chat: React.FC = () => {
 
           return (
             <Message
-              key={message.id}
+              key={message.timestamp}
               message={message.text}
               senderName={message.from.name}
               datetime={datetime}

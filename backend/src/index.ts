@@ -19,7 +19,7 @@ app.use(cors())
 const onlineUsers: { [socketId: string]: User } = {}
 
 io.on('connection', (socket: Socket) => {
-  socket.on(SERVER_EVENTS.CONNECT, (user: User) => {
+  socket.on(SERVER_EVENTS.CONNECT_TO_SERVER, (user: User) => {
     socket.broadcast.emit(CLIENT_EVENTS.USER_CONNECTED, {
       ...user,
       id: socket.id,

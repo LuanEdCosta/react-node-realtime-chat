@@ -12,18 +12,19 @@ export interface Message {
   }
   from: {
     id: string
+    name: string
   }
 }
 
 export enum SERVER_EVENTS {
-  CONNECT = 'CONNECT',
-  SEND_MESSAGE = 'SEND_MESSAGE',
-  DISCONNECT = 'DISCONNECT',
+  CONNECT_TO_SERVER = 'connect_to_server',
+  SEND_MESSAGE = 'send_message',
+  DISCONNECT = 'disconnect',
 }
 
 export enum CLIENT_EVENTS {
-  USER_CONNECTED = 'USER_CONNECTED',
-  USER_DISCONNECTED = 'USER_DISCONNECTED',
-  MESSAGE_RECEIVED = 'MESSAGE_RECEIVED',
-  GET_ONLINE_USERS = 'GET_ONLINE_USERS',
+  USER_CONNECTED = 'user_connected',
+  USER_DISCONNECTED = 'user_disconnected',
+  MESSAGE_RECEIVED = 'message_received',
+  GET_ONLINE_USERS = 'get_online_users',
 }

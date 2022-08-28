@@ -30,7 +30,7 @@ The main idea of the project is very simple: the user sign in with a name and a 
 ## :rocket: What I Learned With This Project
 
 1. Socket.io is a very easy and powerful library. When you understand how it works everything become easy.
-2. React + Node + TypeScript is a powerful stack.
+2. The combination of React + Node + TypeScript is very powerful and productive.
 
 ## :information_source: How To Use
 

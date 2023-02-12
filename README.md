@@ -36,7 +36,7 @@ The main idea of the project is very simple: the user sign in with a name and a 
 
 To clone and run this application, you'll need the latest version of [Git][git], [Node.js][nodejs] + [Yarn][yarn] installed on your computer.
 
-From your command line:
+Then run these comands on the terminal:
 
 ```bash
 # Clone the project from GitHub
